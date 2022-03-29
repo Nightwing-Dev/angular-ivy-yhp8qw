@@ -1,0 +1,98 @@
+<h1>formulario princesas</h1>
+
+<form
+  class="princessform"
+  id="form"
+  (ngSubmit)="usuarioRegistro()"
+  #myForm="ngForm"
+>
+  <h3 class="form__title">Login</h3>
+  <hr />
+  <div class="container">
+    <div class="input-group">
+      <label for="nombre" class="container__input"> Nombre </label>
+      <input
+        type="text"
+        name="nombre"
+        required
+        id="nombre"
+        [(ngModel)]="registro.nombre"
+      />
+    </div>
+    <p>mensaje de error</p>
+  </div>
+  <div class="container">
+    <div class="input-group">
+      <label for="email" class="container__input"> Email </label>
+      <input
+        type="text"
+        name="email"
+        required
+        id="email"
+        [(ngModel)]="registro.email"
+      />
+    </div>
+    <p>mensaje de error</p>
+  </div>
+  <div class="container">
+    <div class="input-group">
+      <label for="contraseña" class="container__input"> Contraseña </label>
+      <input
+        type="text"
+        name="password"
+        required
+        id="password"
+        [(ngModel)]="registro.password"
+      />
+    </div>
+    <p>mensaje de error</p>
+  </div>
+  <button class="form__submit" [disabled]="myForm.invalid" type="submit">
+    Registrar
+  </button>
+  <button class="form__submit" type="button">Accionar</button>
+</form>
+
+<H2 class="css">PRINCESITAS</H2>
+<p>MANERA NORMAL HTML5</p>
+<h2>Vanellope</h2>
+<h3>Metaverso</h3>
+<h4>ralph, felix, mario bross</h4>
+<img
+  src="https://i.ibb.co/RHxhYVH/Profile-Vanellope-Von-schweetz.webp"
+  alt="vanellope"
+/>
+<hr />
+<p>DATA BINDING PRINCESAS</p>
+<div class="princesagrid">
+  <div *ngFor="let princesa of princesitas">
+    <img [src]="princesa.imagen" />
+    <p>{{ princesa.nombre }}</p>
+    <p>{{ princesa.ciudad }}</p>
+    <p>{{ amigos }}</p>
+    <select name="selecciona amigos u enemigos">
+      <option value="value1">{{ princesa.familiaresUamigos }}</option>
+      <option value="value2" selected>Value 2</option>
+      <option value="value3">Value 3</option>
+    </select>
+    <input type="text" required [(ngModel)]="princesa.nombre" />
+    <p>{{ princesa.familiaresUamigos }}</p>
+    <div [ngSwitch]="princesa.nombre">
+      <p *ngSwitchCase="'Ariel'">Como respira si es un pez?</p>
+      <p *ngSwitchCase="'Blancanieves'">
+        Blancanieves es una princesa que tiene 7 enanos de amigos o diremos
+        esclavos?
+      </p>
+      <p *ngSwitchCase="'Rapunzel'">
+        Es una niña que consiguio un hombre en un dia wtf???
+      </p>
+      <p *ngSwitchCase="'vanellope'">nunca debio abandonar a ralph</p>
+      <p *ngSwitchCase="'Merida'">
+        Merida va en contra de los estereotipos y es amada por eso.
+      </p>
+      <p *ngSwitchDefault>no encuentro esa princesa en mi base de datos</p>
+      <hr />
+    </div>
+  </div>
+</div>
+<app-product></app-product>
